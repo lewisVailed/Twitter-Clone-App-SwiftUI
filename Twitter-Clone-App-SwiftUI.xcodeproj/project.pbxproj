@@ -11,6 +11,8 @@
 		D7DD2E0D2923B019005B3B7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD2E0C2923B019005B3B7A /* ContentView.swift */; };
 		D7DD2E0F2923B01A005B3B7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7DD2E0E2923B01A005B3B7A /* Assets.xcassets */; };
 		D7DD2E122923B01A005B3B7A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7DD2E112923B01A005B3B7A /* Preview Assets.xcassets */; };
+		D7DD2E232923B197005B3B7A /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD2E222923B197005B3B7A /* FeedView.swift */; };
+		D7DD2E262923B2EC005B3B7A /* TweetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD2E252923B2EC005B3B7A /* TweetRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		D7DD2E0C2923B019005B3B7A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D7DD2E0E2923B01A005B3B7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7DD2E112923B01A005B3B7A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D7DD2E222923B197005B3B7A /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		D7DD2E252923B2EC005B3B7A /* TweetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,10 @@
 		D7DD2E092923B019005B3B7A /* Twitter-Clone-App-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				D7DD2E1D2923B06A005B3B7A /* Extensions */,
+				D7DD2E1C2923B065005B3B7A /* Models */,
+				D7DD2E1B2923B060005B3B7A /* Service */,
+				D7DD2E182923B054005B3B7A /* Core */,
 				D7DD2E0A2923B019005B3B7A /* Twitter_Clone_App_SwiftUIApp.swift */,
 				D7DD2E0C2923B019005B3B7A /* ContentView.swift */,
 				D7DD2E0E2923B01A005B3B7A /* Assets.xcassets */,
@@ -65,6 +73,76 @@
 				D7DD2E112923B01A005B3B7A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D7DD2E182923B054005B3B7A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D7DD2E1E2923B0EE005B3B7A /* Components */,
+				D7DD2E1F2923B10C005B3B7A /* Feed */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		D7DD2E1B2923B060005B3B7A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D7DD2E1C2923B065005B3B7A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D7DD2E1D2923B06A005B3B7A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D7DD2E1E2923B0EE005B3B7A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D7DD2E242923B288005B3B7A /* Tweets */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D7DD2E1F2923B10C005B3B7A /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				D7DD2E212923B16A005B3B7A /* View */,
+				D7DD2E202923B15F005B3B7A /* ViewModels */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		D7DD2E202923B15F005B3B7A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D7DD2E212923B16A005B3B7A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D7DD2E222923B197005B3B7A /* FeedView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D7DD2E242923B288005B3B7A /* Tweets */ = {
+			isa = PBXGroup;
+			children = (
+				D7DD2E252923B2EC005B3B7A /* TweetRowView.swift */,
+			);
+			path = Tweets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +216,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7DD2E0D2923B019005B3B7A /* ContentView.swift in Sources */,
+				D7DD2E262923B2EC005B3B7A /* TweetRowView.swift in Sources */,
+				D7DD2E232923B197005B3B7A /* FeedView.swift in Sources */,
 				D7DD2E0B2923B019005B3B7A /* Twitter_Clone_App_SwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
