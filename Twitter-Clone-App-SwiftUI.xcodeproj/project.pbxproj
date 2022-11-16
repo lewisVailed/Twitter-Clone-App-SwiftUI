@@ -17,6 +17,7 @@
 		D7DD2E2F2923CCBB005B3B7A /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD2E2E2923CCBB005B3B7A /* ExploreView.swift */; };
 		D7DD2E312923CCDF005B3B7A /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD2E302923CCDF005B3B7A /* NotificationView.swift */; };
 		D7DD2E332923CD23005B3B7A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD2E322923CD23005B3B7A /* MessageView.swift */; };
+		D7DD2E3B2924FF14005B3B7A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD2E3A2924FF14005B3B7A /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		D7DD2E2E2923CCBB005B3B7A /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		D7DD2E302923CCDF005B3B7A /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		D7DD2E322923CD23005B3B7A /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		D7DD2E3A2924FF14005B3B7A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,8 +195,25 @@
 		D7DD2E2D2923CC5B005B3B7A /* Profiles */ = {
 			isa = PBXGroup;
 			children = (
+				D7DD2E392924FEF8005B3B7A /* ModelViews */,
+				D7DD2E382924FEF2005B3B7A /* Views */,
 			);
 			path = Profiles;
+			sourceTree = "<group>";
+		};
+		D7DD2E382924FEF2005B3B7A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D7DD2E3A2924FF14005B3B7A /* ProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D7DD2E392924FEF8005B3B7A /* ModelViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModelViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7DD2E0D2923B019005B3B7A /* ContentView.swift in Sources */,
+				D7DD2E3B2924FF14005B3B7A /* ProfileView.swift in Sources */,
 				D7DD2E262923B2EC005B3B7A /* TweetRowView.swift in Sources */,
 				D7DD2E312923CCDF005B3B7A /* NotificationView.swift in Sources */,
 				D7DD2E232923B197005B3B7A /* FeedView.swift in Sources */,
