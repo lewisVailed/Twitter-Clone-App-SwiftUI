@@ -8,69 +8,22 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @State private var selectedFilter: TweetFilterViewModel = .replies
     var body: some View {
         VStack(alignment: .leading) {
+           
             headerView
-            
             actionButtons
-            
-            VStack(alignment: .leading, spacing: 4) {
-                HStack {
-                    Text("Heath Ledger")
-                        .font(.title2)
-                        .bold()
-                    
-                    Image(systemName: "checkmark.seal.fill")
-                        .foregroundColor(Color(.systemBlue))
-                }
-                
-                Text("@joker")
-                    .font(.subheadline)
-                    .foregroundColor(Color(.systemGray))
-                
-                Text("No content")
-                    .font(.subheadline)
-                    .padding(.vertical)
-                
-                HStack(spacing: 24) {
-                    HStack {
-                        Image(systemName: "mappin.and.ellipse")
-                        
-                        Text("Gotham, New York")
-                    }
-                    HStack {
-                        Image(systemName: "link")
-                        Text("thejoker.com")
-                            
-                    }
-                }
-                .font(.caption)
-                .foregroundColor(Color(.systemGray))
-                 
-                HStack(spacing: 24) {
-                    HStack(spacing: 4) {
-                        Text("512")
+            userInfo
+            HStack {
+                ForEach(TweetFilterViewModel.allCases, id: \.rawValue) { item in
+                    VStack {
+                        Text(item.title)
                             .font(.subheadline)
-                            .bold()
-                        Text("Following")
-                            .font(.caption)
-                            .foregroundColor(Color(.systemGray))
-                        
-                    }
-                    HStack {
-                        Text("4M")
-                            .font(.subheadline)
-                            .bold()
-                        Text("Followers")
-                            .font(.caption)
-                            .foregroundColor(Color(.systemGray))
-                            
+                            .fontWeight(selectedFilter == item ? .semibold : .regular)
                     }
                 }
-                .padding(.vertical)
             }
-           .padding(.horizontal)
-            
             Spacer()
         }
    
@@ -142,4 +95,62 @@ extension ProfileView {
         
     }
     
+    var userInfo: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack {
+                Text("Heath Ledger")
+                    .font(.title2)
+                    .bold()
+                
+                Image(systemName: "checkmark.seal.fill")
+                    .foregroundColor(Color(.systemBlue))
+            }
+            
+            Text("@joker")
+                .font(.subheadline)
+                .foregroundColor(Color(.systemGray))
+            
+            Text("No content")
+                .font(.subheadline)
+                .padding(.vertical)
+            
+            HStack(spacing: 24) {
+                HStack {
+                    Image(systemName: "mappin.and.ellipse")
+                    
+                    Text("Gotham, New York")
+                }
+                HStack {
+                    Image(systemName: "link")
+                    Text("thejoker.com")
+                        
+                }
+            }
+            .font(.caption)
+            .foregroundColor(Color(.systemGray))
+             
+            HStack(spacing: 24) {
+                HStack(spacing: 4) {
+                    Text("512")
+                        .font(.subheadline)
+                        .bold()
+                    Text("Following")
+                        .font(.caption)
+                        .foregroundColor(Color(.systemGray))
+                    
+                }
+                HStack {
+                    Text("4M")
+                        .font(.subheadline)
+                        .bold()
+                    Text("Followers")
+                        .font(.caption)
+                        .foregroundColor(Color(.systemGray))
+                        
+                }
+            }
+            .padding(.vertical)
+        }
+       .padding(.horizontal)
+    }
 }
