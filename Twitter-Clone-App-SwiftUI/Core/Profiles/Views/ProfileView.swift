@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @State private var selectedFilter: TweetFilterViewModel = .tweets
+    @Environment(\.presentationMode) var mode
     @Namespace var animation
     
     var body: some View {
@@ -39,7 +40,7 @@ extension ProfileView {
             
             VStack {
                 Button {
-                    //
+                    mode.wrappedValue.dismiss()
                 } label: {
                     Image(systemName: "arrow.left")
                         .resizable()
@@ -124,27 +125,8 @@ extension ProfileView {
             .font(.caption)
             .foregroundColor(Color(.systemGray))
              
-            HStack(spacing: 24) {
-                HStack(spacing: 4) {
-                    Text("512")
-                        .font(.subheadline)
-                        .bold()
-                    Text("Following")
-                        .font(.caption)
-                        .foregroundColor(Color(.systemGray))
-                    
-                }
-                HStack {
-                    Text("4M")
-                        .font(.subheadline)
-                        .bold()
-                    Text("Followers")
-                        .font(.caption)
-                        .foregroundColor(Color(.systemGray))
-                        
-                }
-            }
-            .padding(.vertical)
+           UserStatsView()
+                .padding(.vertical)
         }
        .padding(.horizontal)
     }

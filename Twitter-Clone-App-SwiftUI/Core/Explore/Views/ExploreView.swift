@@ -9,20 +9,26 @@ import SwiftUI
 
 struct ExploreView: View {
     var body: some View {
-        VStack {
-            ScrollView {
-                LazyVStack {
-                    ForEach(0...15, id: \.self) { _ in
-                        NavigationLink {
-                            ProfileView()
-                        } label: {
-                            UserRowView()
-                        }
-                        
-                    }
-                }
+        NavigationView {
+            VStack {
+                ScrollView {
+                    LazyVStack {
+                        ForEach(0...15, id: \.self) { _ in
+                            NavigationLink {
+                                ProfileView()
+                            } label: {
+                                UserRowView()
+                            }
+                            
+                          }
+                      }
+                  }
             }
+            .navigationTitle("Search")
+            .navigationBarTitleDisplayMode(.inline)
         }
+        
+      
     }
 }
 
