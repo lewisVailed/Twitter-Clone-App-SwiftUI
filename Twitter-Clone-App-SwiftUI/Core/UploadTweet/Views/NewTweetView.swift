@@ -9,18 +9,20 @@ import SwiftUI
 
 struct NewTweetView: View {
     @State private var caption = ""
+    @Environment (\.presentationMode) var presentantionMode
+    
     var body: some View {
         VStack {
             HStack {
                 Button {
-                    //
+                    presentantionMode.wrappedValue.dismiss()
                 } label: {
                     Text("Cancel")
                         .foregroundColor(Color(.systemBlue))
                 }
                 Spacer()
                 Button {
-                    //
+                    print("tweet")
                 } label: {
                     Text("Tweet")
                         .bold()
@@ -33,11 +35,13 @@ struct NewTweetView: View {
                 
             }
             .padding()
+            
             HStack(alignment: .top) {
                 Circle()
                     .frame(width: 64, height: 64)
-                TextArea(text: $caption, "What's happening?")
-                    
+
+                TextArea("What's happening?", text: $caption)
+                
             }
             .padding()
         }
