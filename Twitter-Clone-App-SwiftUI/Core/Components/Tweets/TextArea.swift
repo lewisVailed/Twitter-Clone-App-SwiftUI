@@ -14,15 +14,23 @@ struct TextArea: View {
     init(text: Binding<String>, _ placeholder: String) {
         self._text = text
         self.placeholder = placeholder
+        UITextView.appearance().backgroundColor = .clear
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .topLeading) {
+            
+            if text.isEmpty {
+                Text(placeholder)
+                    .foregroundColor(Color(.placeholderText))
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 12)
+            }
+            TextEditor(text: $text)
+                .padding(4)
+        }
+        .font(.body)
     }
 }
 
-struct TextArea_Previews: PreviewProvider {
-    static var previews: some View {
-        TextArea(text: <#Binding<String>#>, <#String#>)
-    }
-}
+

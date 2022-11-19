@@ -28,7 +28,7 @@ struct FeedView: View {
                     .frame(width: 128, height: 96)
                     .padding(.vertical)
                     .fullScreenCover(isPresented: $showNewTweetView) {
-                        Text("New tweet view")
+                        NewTweetView()
                     }
             }
 
