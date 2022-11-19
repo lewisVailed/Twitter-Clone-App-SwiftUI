@@ -29,16 +29,16 @@ struct SideMenuView: View {
                     
             }
             
-            ForEach(SideMenuViewModel.allCases, id:  \.rawValue) { option in
-                HStack(spacing: 12) {
-                    Image(systemName: option.imageName)
-                        .font(.headline)
-                        .foregroundColor(.gray)
-                    Text(option.description)
-                        .font(.subheadline)
-                    Spacer()
+            ForEach(SideMenuViewModel.allCases, id:  \.rawValue) { viewModel in
+                if viewModel == .profile {
+                    NavigationLink {
+                        ProfileView()
+                    } label: {
+                        SideMenuRowView(viewModel: viewModel)
+                    }
+                } else {
+                    SideMenuRowView(viewModel: viewModel)
                 }
-                .frame(height: 50)
             }
             Spacer()
         }

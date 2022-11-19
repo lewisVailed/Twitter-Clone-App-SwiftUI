@@ -9,13 +9,26 @@ import SwiftUI
 
 struct FeedView: View {
     var body: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(0 ... 20, id: \.self) { _ in
-                    TweetRowView()
-                       
+        ZStack(alignment: .bottomTrailing) {
+            ScrollView {
+                LazyVStack {
+                    ForEach(0 ... 20, id: \.self) { _ in
+                        TweetRowView()
+                           
+                    }
                 }
             }
+            
+            Button {
+                print("show new tweet screen")
+            } label: {
+                Image("tweet")
+                    .resizable()
+                    
+                    .frame(width: 128, height: 96)
+                    .padding(.vertical)
+            }
+
         }
     }
 }

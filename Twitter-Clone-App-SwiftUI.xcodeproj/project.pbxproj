@@ -145,8 +145,8 @@
 		D7DD2E1F2923B10C005B3B7A /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				D7DD2E212923B16A005B3B7A /* View */,
 				D7DD2E202923B15F005B3B7A /* ViewModels */,
+				D7DD2E212923B16A005B3B7A /* View */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
