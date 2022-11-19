@@ -12,7 +12,8 @@ struct Twitter_Clone_App_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
+          //      ContentView()
+                LoginView()
             }
         }
     }
