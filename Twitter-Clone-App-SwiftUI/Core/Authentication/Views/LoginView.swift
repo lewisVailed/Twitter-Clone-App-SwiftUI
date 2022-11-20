@@ -13,21 +13,7 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            VStack(alignment: .leading) {
-                HStack { Spacer() }
-                Text("Hello.")
-                    .font(.largeTitle)
-                    .fontWeight(.semibold)
-                Text("Welcome Back")
-                    .font(.largeTitle)
-                    .fontWeight(.semibold)
-                    
-            }
-            .frame(height: 260)
-            .padding(.leading)
-            .background(Color(.systemBlue))
-            .foregroundColor(.white)
-            .clipShape(RoundedShape(corners: [.bottomRight]))
+           AuthenticationHeaderView(title1: "Hello", title2: "Welcome back")
             
             VStack(spacing: 40) {
                 CustomInputField(imageName: "envelope", placeHolderText: "Email", text: $email)
@@ -52,34 +38,11 @@ struct LoginView: View {
                 }
             }
             
-            Button {
-                print("sign in here")
-            } label: {
-                Text("Sign In")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(width: 340, height: 50)
-                    .background(RoundedRectangle(cornerRadius: 25))
-                    .padding(.top)
-            }
-            .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
-
+            AuthenticationButtonView(buttonActionText: "sign in here", text: "Sign In")
+            
             Spacer()
             
-            NavigationLink {
-                RegisterView()
-                    .navigationBarHidden(true)
-            } label: {
-                HStack {
-                    Text("Don't have an account?")
-                    Text("Sign Up")
-                        .fontWeight(.semibold)
-                }
-                .font(.subheadline)
-                .foregroundColor(Color(.systemBlue))
-                
-            }
-            .padding()
+            AuthenticationBottomView(title1: "Don't have an account?", title2: "Sign Up", whatView: RegisterView())
 
         }
         .ignoresSafeArea()
