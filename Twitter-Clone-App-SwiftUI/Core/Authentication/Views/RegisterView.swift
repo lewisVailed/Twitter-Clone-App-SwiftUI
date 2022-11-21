@@ -20,9 +20,9 @@ struct RegisterView: View {
             VStack(spacing: 40) {
                 CustomInputField(imageName: "envelope", placeHolderText: "Email", text: $email)
                 
-                CustomInputField(imageName: "envelope", placeHolderText: "Username", text: $username)
+                CustomInputField(imageName: "person", placeHolderText: "Username", text: $username)
                 
-                CustomInputField(imageName: "envelope", placeHolderText: "Full name", text: $fullname)
+                CustomInputField(imageName: "person", placeHolderText: "Full name", text: $fullname)
                 
                 CustomInputField(imageName: "lock", placeHolderText: "Password", text: $password)
             }
