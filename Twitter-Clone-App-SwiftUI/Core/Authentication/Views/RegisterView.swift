@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct RegisterView: View {
+     
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var viewModel: AuthViewModel
     @State private var email = ""
     @State private var fullname =  ""
     @State private var username =  ""
@@ -31,13 +34,25 @@ struct RegisterView: View {
             .padding(.bottom, 46)
 
             
-            AuthenticationButtonView(buttonActionText: "register in here", text: "Sign Up")
+            Button {
+                viewModel.register(withEmail: email,
+                                   userName: username,
+                                   fullName: fullname,
+                                   password: password)
+            } label: {
+                Text("Sign Up")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(width: 340, height: 50)
+                    .background(RoundedRectangle(cornerRadius: 25))
+                    .padding(.top)
+            }
+            .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 0)
             
             Spacer()
             
-            NavigationLink {
-                LoginView()
-                    .navigationBarHidden(true)
+            Button {
+                presentationMode.wrappedValue.dismiss()
             } label: {
                 HStack {
                     Text("Already have an account?")
