@@ -33,7 +33,23 @@ class AuthViewModel: ObservableObject {
             
             print("DEBUG: Registered user successfully")
             print("DEBUG: user is \(self.userSession)")
+            
+            let data = ["email": email,
+                        "username": userName.lowercased(),
+                        "fullname": fullName,
+                        "userid": user.uid]
+            
+            Firestore.firestore().collection("users")
+                .document(user.uid)
+                .setData(data) { _ in
+                    print("DEBUG: Did upload user data")
+                }
         }
+    }
+    
+    func logOut() {
+        userSession = nil
+        try? Auth.auth().signOut()
     }
     
 }

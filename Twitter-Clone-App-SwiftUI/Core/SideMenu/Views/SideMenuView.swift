@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SideMenuView: View {
+    
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             VStack(alignment : .leading) {
@@ -36,6 +39,13 @@ struct SideMenuView: View {
                     } label: {
                         SideMenuRowView(viewModel: viewModel)
                     }
+                } else if viewModel == .logout {
+                    Button {
+                        authViewModel.logOut()
+                    } label: {
+                        SideMenuRowView(viewModel: viewModel)
+                    }
+
                 } else {
                     SideMenuRowView(viewModel: viewModel)
                 }
