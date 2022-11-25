@@ -14,11 +14,24 @@ class AuthViewModel: ObservableObject {
     init() {
         self.userSession = Auth.auth().currentUser
         
-        print("DEBUG: user session is \(self.userSession)")
+        print("DEBUG: user session is \(self.userSession?.uid)")
     }
     
     func login(withEmail email: String, password: String) {
-        print("DEBUG: login with email \(email)")
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("DEBUG: Failed to sign in with error \(error.localizedDescription)")
+                return
+            }
+            
+            guard let user = result?.user else { return }
+            self.userSession = user
+            
+            print("DEBUG: Did log user in")
+            print("DEBUG: user is \(self.userSession)")
+            
+            
+        }
     }
     
     func register(withEmail email: String, userName: String, fullName: String, password: String) {
@@ -37,7 +50,7 @@ class AuthViewModel: ObservableObject {
             let data = ["email": email,
                         "username": userName.lowercased(),
                         "fullname": fullName,
-                        "userid": user.uid]
+                        "uid": user.uid]
             
             Firestore.firestore().collection("users")
                 .document(user.uid)
@@ -49,6 +62,7 @@ class AuthViewModel: ObservableObject {
     
     func logOut() {
         userSession = nil
+        // user log out on backend
         try? Auth.auth().signOut()
     }
     

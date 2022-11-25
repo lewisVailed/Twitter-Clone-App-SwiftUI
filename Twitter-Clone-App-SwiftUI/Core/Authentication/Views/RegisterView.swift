@@ -27,7 +27,7 @@ struct RegisterView: View {
                 
                 CustomInputField(imageName: "person", placeHolderText: "Full name", text: $fullname)
                 
-                CustomInputField(imageName: "lock", placeHolderText: "Password", text: $password)
+                CustomInputField(imageName: "lock", placeHolderText: "Password", isSecureField: true, text: $password)
             }
             .padding(.horizontal, 32)
             .padding(.top, 46)
