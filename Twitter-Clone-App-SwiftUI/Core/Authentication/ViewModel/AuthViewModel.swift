@@ -9,13 +9,17 @@ import SwiftUI
 import Firebase
 
 class AuthViewModel: ObservableObject {
+    private var tempUserSession: FirebaseAuth.User?
     @Published var userSession: FirebaseAuth.User?
+    
     @Published var didAuthUser = false
+    
+    private let service = UserService()
     
     init() {
         self.userSession = Auth.auth().currentUser
+        self.fetchUser()
         
-        print("DEBUG: user session is \(self.userSession?.uid)")
     }
     
     func login(withEmail email: String, password: String) {
@@ -43,10 +47,9 @@ class AuthViewModel: ObservableObject {
             }
             
             guard let user = result?.user else { return }
+            self.tempUserSession = user
             
-            
-            print("DEBUG: Registered user successfully")
-            print("DEBUG: user is \(self.userSession)")
+
             
             let data = ["email": email,
                         "username": userName.lowercased(),
@@ -65,6 +68,24 @@ class AuthViewModel: ObservableObject {
         userSession = nil
         // user log out on backend
         try? Auth.auth().signOut()
+    }
+    
+    func uploadProfileImage(_ image: UIImage) {
+        guard let uid = tempUserSession?.uid else { return }
+        
+        ImageUploader.uploadImage(image: image) { profileImageURL in
+            Firestore.firestore().collection("users")
+                .document(uid)
+                .updateData(["profileImageURL": profileImageURL]) { _ in 
+                    self.userSession = self.tempUserSession
+                }
+            
+        }
+    }
+    
+    func fetchUser() {
+        guard let uid = userSession?.uid else { return }
+        service.fetchUser(withUid: uid)
     }
     
 }

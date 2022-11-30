@@ -11,6 +11,8 @@ struct ProfilePhotoSelectorView: View {
     @State private var showImagePicker = false
     @State private var selectedImage: UIImage?
     @State private var profileImage: Image?
+    @EnvironmentObject var AuthViewModel: AuthViewModel
+    
     
     var body: some View {
         VStack {
@@ -22,35 +24,58 @@ struct ProfilePhotoSelectorView: View {
                 if let profileImage = profileImage {
                     profileImage
                         .resizable()
-                        .scaledToFit()
-                        .frame(width: 160, height: 160)
-                        .padding(.top, 44)
+                        .scaledToFill()
+                        .frame(width: 180, height: 180)
+                        
                         .clipShape(Circle())
                 } else {
                     VStack {
                         Image(systemName: "plus.diamond")
+                            .renderingMode(.template)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 160, height: 160)
-                            .padding(.top, 44)
-                        
+                            .frame(width: 180 , height: 180)
                         Text("Photo")
                             .foregroundColor(Color(.systemBlue))
                             .font(.title2)
                             .bold()
+                        
+                    
                     }
                 }
             }
-            .sheet(isPresented: $showImagePicker) {
+            
+            .sheet(isPresented: $showImagePicker,
+                   onDismiss: loadImage) {
                 ImagePicker(selectedImage: $selectedImage)
             }
+            .padding(.top, 44)
+            
+            if let selectedImage = selectedImage {
+                Button {
+                    AuthViewModel.uploadProfileImage(selectedImage)
+                } label: {
+                    Text("Continue")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .frame(width: 340, height: 50)
+                        .background(RoundedRectangle(cornerRadius: 25))
+                        .padding(.top)
+                }
+                .padding(.top, 32)
 
+            }
             
             Spacer()
         }
         .ignoresSafeArea()
         
         
+    }
+    
+    func loadImage() {
+        guard let selectedImage = selectedImage else { return }
+        profileImage = Image(uiImage: selectedImage)
     }
     
 }
